@@ -3,9 +3,10 @@ package file_test
 import (
 	"testing"
 
-	"edmgen/pkg/edm"
-	"edmgen/pkg/filters/file"
 	"github.com/stretchr/testify/assert"
+
+	"github.com/crashdump/edmgen/pkg/edm"
+	"github.com/crashdump/edmgen/pkg/filters/file"
 )
 
 func Test_Dirname(t *testing.T) {

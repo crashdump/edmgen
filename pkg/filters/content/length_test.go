@@ -3,8 +3,9 @@ package content_test
 import (
 	"testing"
 
-	"edmgen/pkg/filters/content"
 	"github.com/stretchr/testify/assert"
+
+	"github.com/crashdump/edmgen/pkg/filters/content"
 )
 
 func Test_LineLength(t *testing.T) {

@@ -9,8 +9,9 @@ import (
 	"os/exec"
 	"testing"
 
-	"edmgen/pkg/edm"
 	"github.com/stretchr/testify/suite"
+
+	"github.com/crashdump/edmgen/pkg/edm"
 )
 
 var fixturesDir = "../test/fixtures"

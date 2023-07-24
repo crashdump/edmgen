@@ -7,10 +7,11 @@ import (
 	"strings"
 	"testing"
 
-	"edmgen/pkg/edm"
-	"edmgen/pkg/filters/content"
-	"edmgen/pkg/filters/file"
 	"github.com/stretchr/testify/assert"
+
+	"github.com/crashdump/edmgen/pkg/edm"
+	"github.com/crashdump/edmgen/pkg/filters/content"
+	"github.com/crashdump/edmgen/pkg/filters/file"
 )
 
 var fixturesDir = "../../test/fixtures"

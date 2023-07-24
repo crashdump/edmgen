@@ -11,8 +11,8 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"edmgen/pkg/filters/content"
-	"edmgen/pkg/filters/file"
+	"github.com/crashdump/edmgen/pkg/filters/content"
+	"github.com/crashdump/edmgen/pkg/filters/file"
 )
 
 type Opts struct{}
