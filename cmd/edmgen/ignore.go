@@ -5,6 +5,7 @@ var ignoreFilenames = []string{
 }
 var ignoreDirnames = []string{
 	"node_modules",
+	"documentation",
 }
 
 var requireExtentions = []string{

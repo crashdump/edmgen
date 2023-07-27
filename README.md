@@ -10,7 +10,7 @@ While a very useful technology, most DLP solutions lack the tools to sample the 
 ## Install
 
 ```bash
-go install github.com/crashdump/edmgen
+go install github.com/crashdump/edmgen/cmd/edmgen@latest
 ```
 
 ## Use
@@ -61,6 +61,7 @@ Can be applied to the phases: `ExamineFiles` and `SampleContent`
 
 * `LineLength`: Only select lines based on their length. Min and Max can be specified.
 * `LongestLine`: Only select the longest line in the file.
+* `IgnoreLine`: Ignore any line containing a specified string.
 * `Uniq`: Deduplicate content. Especially useful during the final `SampleContent` phase.
 
 Note: All filters are implemented as their own self-contained function, which are easily extensible. Implementing your own filter should not require any changes to the core code.

@@ -2,7 +2,7 @@
 .DEFAULT_GOAL=test
 
 build: test
-	go build -o bin/edmgen/edmgen cmd/edmgen/*.go
+	go build -v -o bin/edmgen/edmgen cmd/edmgen/*.go
 
 clean:
 	rm -f bin/edmgen
@@ -10,7 +10,10 @@ clean:
 test:
 	go mod tidy
 	staticcheck ./...
-	go test ./...
+	go test -v ./...
 
 integration-test:
-	go test ./...  -tags=integration
+	go test -v ./... -tags=integration
+
+release: test integration-test build
+	go test all -v

@@ -37,6 +37,5 @@ func (l logging) printWarn(str string) {
 }
 
 func (l logging) printFatal(str string) {
-	l.logger.Print(fmt.Sprintf("[!!] %s", str))
 	panic(str)
 }
