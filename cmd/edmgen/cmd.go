@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/csv"
 	"errors"
 	"fmt"
 	"os"
@@ -60,8 +61,12 @@ func main() {
 				Destination: &flagFormat,
 				Action: func(ctx *cli.Context, v string) error {
 					formats := []string{STDOUT, "csv", "txt"}
-					if slices.Contains[[]string](formats, flagFormat) {
+					if !slices.Contains[[]string](formats, flagFormat) {
 						return fmt.Errorf("output %s not currently supported", flagFormat)
+					}
+					if flagOutput == "" {
+						logger.print("You need to specify a file output (-o) when selecting specific formats")
+						os.Exit(1)
 					}
 					return nil
 				},
@@ -152,10 +157,38 @@ func writeStdout(lines []string) {
 	}
 }
 
-func writeFileTxt(filename string, lines []string) {
+func writeFileTxt(filename string, lines []string) error {
+	f, err := os.Create(filename)
+	if err != nil {
+		return fmt.Errorf("failed to create file: %s", err)
+	}
+	defer f.Close()
 
+	for _, line := range lines {
+		_, err := f.WriteString(line + "\n")
+		if err != nil {
+			return fmt.Errorf("error writing record to file: %s", err)
+		}
+	}
+
+	return nil
 }
 
-func writeFileCsv(filename string, lines []string) {
+func writeFileCsv(filename string, lines []string) error {
+	f, err := os.Create(filename)
+	if err != nil {
+		return fmt.Errorf("failed to create file: %s", err)
+	}
+	defer f.Close()
 
+	w := csv.NewWriter(f)
+	defer w.Flush()
+
+	for _, line := range lines {
+		if err := w.Write([]string{line}); err != nil {
+			return fmt.Errorf("error writing record to file: %s", err)
+		}
+	}
+
+	return nil
 }
