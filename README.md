@@ -75,7 +75,7 @@ Performance will vary depending on the size of the repository and the filters ap
 ### Build
 
 ```bash
-go build ./... -o bin/edmgen
+go build ./... -o dist/edmgen
 ```
 
 ### Test

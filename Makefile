@@ -2,10 +2,10 @@
 .DEFAULT_GOAL=test
 
 build: test
-	go build -v -o bin/edmgen/edmgen cmd/edmgen/*.go
+	go build -v -o dist/edmgen/edmgen cmd/edmgen/*.go
 
 clean:
-	rm -f bin/edmgen
+	rm -f dist/edmgen
 
 test:
 	go mod tidy
