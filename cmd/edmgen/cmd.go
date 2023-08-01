@@ -162,7 +162,6 @@ func writeFileTxt(filename string, lines []string) error {
 	if err != nil {
 		return fmt.Errorf("failed to create file: %s", err)
 	}
-	defer f.Close()
 
 	for _, line := range lines {
 		_, err := f.WriteString(line + "\n")
@@ -171,7 +170,7 @@ func writeFileTxt(filename string, lines []string) error {
 		}
 	}
 
-	return nil
+	return f.Close()
 }
 
 func writeFileCsv(filename string, lines []string) error {
@@ -179,7 +178,6 @@ func writeFileCsv(filename string, lines []string) error {
 	if err != nil {
 		return fmt.Errorf("failed to create file: %s", err)
 	}
-	defer f.Close()
 
 	w := csv.NewWriter(f)
 	defer w.Flush()
@@ -190,5 +188,5 @@ func writeFileCsv(filename string, lines []string) error {
 		}
 	}
 
-	return nil
+	return f.Close()
 }

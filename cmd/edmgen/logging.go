@@ -21,21 +21,17 @@ func (l logging) print(str string) {
 }
 
 func (l logging) printHeader(str string) {
-	l.logger.Print(fmt.Sprintf("> %s", str))
+	l.logger.Printf("> %s", str)
 }
 
 func (l logging) printResult(str string) {
-	l.logger.Print(fmt.Sprintf("  %s", str))
+	l.logger.Printf("  %s", str)
 }
 
 func (l logging) printfResult(format string, args interface{}) {
 	l.printResult(fmt.Sprintf(format, args))
 }
 
-func (l logging) printWarn(str string) {
-	l.logger.Print(fmt.Sprintf("[!] %s", str))
-}
-
-func (l logging) printFatal(str string) {
+func (logging) printFatal(str string) {
 	panic(str)
 }
